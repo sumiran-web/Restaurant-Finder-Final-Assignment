@@ -43,6 +43,18 @@ public class Register extends Fragment implements View.OnClickListener {
     public Register() {
         // Required empty public constructor
     }
+    private void DisplayNotification(){
+        Notification notification = new NotificationCompat.Builder(getActivity(), Notification_Channel.Channel_1)
+                .setSmallIcon(R.drawable.ic_action_user)
+                .setContentTitle("Register Successful")
+                .setContentText("Registration Successful")
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
+        notificationManagerCompat.notify(1, notification);
+
+    }
+}
+
 
 
     @Override
