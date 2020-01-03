@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,3 +80,77 @@ public class Restaurant_info extends AppCompatActivity  {
         getComment();
     } {
 }
+    private void getComment(){
+        final Restaurant_API restaurant_api = API.createinstance().create(Restaurant_API.class);
+        final String id = getIntent().getStringExtra("id");
+
+        Toast.makeText(this, id, Toast.LENGTH_LONG).show();
+        Call<List<Reviews>>listCall = restaurant_api.getReview(id);
+        listCall.enqueue(new Callback<List<Reviews>>() {
+            @Override
+            public void onResponse(Call<List<Reviews>> call, Response<List<Reviews>> response) {
+                commentList = response.body();
+                recyclerView.setLayoutManager(new LinearLayoutManager(Restaurant_info.this));
+                recyclerView.setAdapter(new CommentAdapter(Restaurant_info.this, commentList));
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Reviews>> call, Throwable t) {
+                Toast.makeText(Restaurant_info.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mapView.onStop();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
+    }
+
+
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+}
+
