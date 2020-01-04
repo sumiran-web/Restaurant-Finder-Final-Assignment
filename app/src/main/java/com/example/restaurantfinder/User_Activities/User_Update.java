@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.restaurantfinder.Dashboard.Dashboard;
+
 public class User_UpdateAppCompatActivity implements View.OnClickListener {
     EditText et_fname, et_lname, et_email, et_username, et_password, et_address, et_age;
     Button btn_update;
@@ -107,7 +109,7 @@ public class User_UpdateAppCompatActivity implements View.OnClickListener {
         SharedPreferences sharedPreferences = (User_Update.this).getSharedPreferences("storetoken",0);
         String userID = sharedPreferences.getString("userid",null);
 
-        Toast.makeText(this,"User id: +" +userID,Toast.LENGTH_LONG).show();
+        Toast.makeText(Update_User.this,"User id: +" +userID,Toast.LENGTH_LONG).show();
 
         Call<String> updateProfileData = user_api.updateProfile(userID, newFname, newLname, newEmail, newUsername, newPassword, newAddress, newAge);
         updateProfileData.enqueue(new Callback<String>() {
