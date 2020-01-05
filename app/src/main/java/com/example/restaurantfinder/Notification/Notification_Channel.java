@@ -19,4 +19,13 @@ public class Notification_Channel {
                     Channel_1, "Channel_1",
                     NotificationManager.IMPORTANCE_HIGH
             );
+            channel.setDescription("This is channel1");
+
+            NotificationManager manager = context.getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+    }
 }
+
+
+
