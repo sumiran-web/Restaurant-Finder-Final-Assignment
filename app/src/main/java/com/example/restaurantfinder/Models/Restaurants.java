@@ -74,4 +74,14 @@ public class Restaurants {
         Latitude = latitude;
     }
 
+    public Restaurants(String restaurantlogo, String restaurantname, String restauranttype, String restaurantdesc, String restaurantcontact, String longitude, String latitude) {
+        Restaurantlogo = restaurantlogo;
+        Restaurantname = restaurantname;
+        Restauranttype = restauranttype;
+        Restaurantdesc = restaurantdesc;
+        Restaurantcontact = restaurantcontact;
+        Longitude = longitude;
+        Latitude = latitude;
+    }
 }
+
