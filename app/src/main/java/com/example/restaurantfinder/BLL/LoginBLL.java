@@ -1,5 +1,9 @@
 package com.example.restaurantfinder.BLL;
 
+import android.os.StrictMode;
+
+import com.example.restaurantfinder.Models.Token_Generate;
+
 import java.io.IOException;
 
 import retrofit2.Response;
@@ -29,5 +33,18 @@ public class LoginBLL {
         }
         return isSuccess;
     }
+    private void StrictMode(){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+    }
 
+    public Token_Generate getToken_generate() {
+        return token_generate;
+    }
+
+    public void setToken_generate(Token_Generate token_generate) {
+        this.token_generate = token_generate;
+    }
 }
+
+
