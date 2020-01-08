@@ -8,24 +8,35 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.restaurantfinder.API.User_API;
 import com.example.restaurantfinder.Dashboard.Dashboard;
+import com.example.restaurantfinder.Models.Users;
+import com.example.restaurantfinder.R;
 
-public class User_UpdateAppCompatActivity implements View.OnClickListener {
-    EditText et_fname, et_lname, et_email, et_username, et_password, et_address, et_age;
-    Button btn_update;
-    Boolean isLoggedIn = false;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class User_Update extends AppCompatActivity implements View.OnClickListener {
+        EditText et_fname, et_lname, et_email, et_username, et_password, et_address, et_age;
+        Button btn_update;
+        Boolean isLoggedIn = false;
 
 
-    private static final String BASE_URL = "http://10.0.2.2:3100/";
+private static final String BASE_URL = "http://10.0.2.2:3100/";
 
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+        SharedPreferences sharedPreferences;
+        SharedPreferences.Editor editor;
 
-    User_API user_api;
-    Retrofit retrofit;
+        User_API user_api;
+        Retrofit retrofit;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+@Override
+protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user__update);
 
@@ -41,28 +52,28 @@ public class User_UpdateAppCompatActivity implements View.OnClickListener {
 
         btn_update = findViewById(R.id.btnUpdate);
         btn_update.setOnClickListener(this);
-    }
+        }
 
-    @Override
-    public void onClick(View v) {
+@Override
+public void onClick(View v) {
         if (v.getId() == R.id.btnUpdate) {
-            updateProfile();
+        updateProfile();
         }
 
 
-    }
+        }
 
-    private void createInstance() {
+private void createInstance() {
         retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build();
         user_api = retrofit.create(User_API.class);
 
-    }
+        }
 
 
-    private void LoadUserDetail() {
+private void LoadUserDetail() {
         createInstance();
 
         sharedPreferences = getSharedPreferences("storetoken", 0);
@@ -72,28 +83,28 @@ public class User_UpdateAppCompatActivity implements View.OnClickListener {
         Call<Users> usersCall = user_api.loadprofile(userID);
 
         usersCall.enqueue(new Callback<Users>() {
-            @Override
-            public void onResponse(Call<Users> call, Response<Users> response) {
-                Users users = response.body();
-                et_fname.setText(users.getFname());
-                et_lname.setText(users.getLname());
-                et_email.setText(users.getEmail());
-                et_username.setText(users.getUsername());
-                et_password.setText(users.getPassword());
-                et_address.setText(users.getAddress());
-                et_age.setText(users.getAge());
-            }
+@Override
+public void onResponse(Call<Users> call, Response<Users> response) {
+        Users users = response.body();
+        et_fname.setText(users.getFname());
+        et_lname.setText(users.getLname());
+        et_email.setText(users.getEmail());
+        et_username.setText(users.getUsername());
+        et_password.setText(users.getPassword());
+        et_address.setText(users.getAddress());
+        et_age.setText(users.getAge());
+        }
 
-            @Override
-            public void onFailure(Call<Users> call, Throwable t) {
-                Toast.makeText(User_Update.this, t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
-            }
+@Override
+public void onFailure(Call<Users> call, Throwable t) {
+        Toast.makeText(User_Update.this, t.getLocalizedMessage(), Toast.LENGTH_LONG).show();
+        }
         });
 
 
-    }
+        }
 
-    public void updateProfile() {
+public void updateProfile() {
 
         createInstance();
         String newFname, newLname, newEmail, newUsername, newPassword, newAddress, newAge;
@@ -109,28 +120,25 @@ public class User_UpdateAppCompatActivity implements View.OnClickListener {
         SharedPreferences sharedPreferences = (User_Update.this).getSharedPreferences("storetoken",0);
         String userID = sharedPreferences.getString("userid",null);
 
-        Toast.makeText(Update_User.this,"User id: +" +userID,Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"User id: +" +userID,Toast.LENGTH_LONG).show();
 
         Call<String> updateProfileData = user_api.updateProfile(userID, newFname, newLname, newEmail, newUsername, newPassword, newAddress, newAge);
         updateProfileData.enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Toast.makeText(User_Update.this, "Profile Updated", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(User_Update.this, Dashboard.class);
-                startActivity(intent);
-            }
+@Override
+public void onResponse(Call<String> call, Response<String> response) {
+        Toast.makeText(User_Update.this, "Profile Updated", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(User_Update.this, Dashboard.class);
+        startActivity(intent);
+        }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Toast.makeText(User_Update.this, "Error"+t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
+@Override
+public void onFailure(Call<String> call, Throwable t) {
+        Toast.makeText(User_Update.this, "Error"+t.getMessage(), Toast.LENGTH_SHORT).show();
+        }
         });
 
 
-    }
-}
+        }
+        }
 
 
-
- {
-}

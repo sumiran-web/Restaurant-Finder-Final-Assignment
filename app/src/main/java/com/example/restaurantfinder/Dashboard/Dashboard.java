@@ -2,13 +2,18 @@ package com.example.restaurantfinder.Dashboard;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.restaurantfinder.MainActivity;
 import com.example.restaurantfinder.R;
 import com.example.restaurantfinder.User_Activities.About_Us;
 import com.example.restaurantfinder.User_Activities.Restaurant_list;
+import com.example.restaurantfinder.User_Activities.User_Update;
 
 import static androidx.core.content.ContextCompat.startActivity;
 import static com.mapbox.mapboxsdk.Mapbox.getApplicationContext;
