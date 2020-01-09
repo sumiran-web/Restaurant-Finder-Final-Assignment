@@ -7,7 +7,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SplashScreenpublic extends AppCompatActivity {
+public class SplashScreen  extends AppCompatActivity {
     SharedPreferences sharedPreferences;
 
     @Override
@@ -25,5 +25,6 @@ public class SplashScreenpublic extends AppCompatActivity {
         }, 3000);
     }
 }
- {
-}
+
+
+

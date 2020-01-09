@@ -1,10 +1,26 @@
 package com.example.restaurantfinder.Adapters;
 
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Restaurant_List_Adapterextends RecyclerView.Adapter<Restaurant_List_Adapter.Holder> {
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.restaurantfinder.Models.Restaurants;
+import com.example.restaurantfinder.R;
+import com.example.restaurantfinder.Retro_API.API;
+import com.example.restaurantfinder.User_Activities.Restaurant_info;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
+
+public class Restaurant_List_Adapter extends RecyclerView.Adapter<Restaurant_List_Adapter.Holder> {
 private Context context;
 private List<Restaurants> restaurantsList;
 public static  String Lat;
@@ -32,7 +48,7 @@ final Restaurants restaurants = restaurantsList.get(i);
 //        Uri uri = Uri.parse(API.BASE_URL + restaurants.getRestaurantlogo());
 //        holder.img_logo.setImageURI(uri);
 
-        String path=API.BASE_URL+"logo/"+restaurants.getRestaurantlogo();
+        String path= API.BASE_URL+"logo/"+restaurants.getRestaurantlogo();
         Picasso.get().load(path).into(holder.img_logo);
         holder.card_view.setOnClickListener(new View.OnClickListener() {
 @Override
@@ -77,5 +93,3 @@ public class Holder extends RecyclerView.ViewHolder {
 }
 }
 
-        {
-}

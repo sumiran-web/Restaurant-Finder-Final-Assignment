@@ -1,9 +1,13 @@
 package com.example.restaurantfinder.Adapters;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewpageAdapterextends FragmentPagerAdapter {
+public class ViewpageAdapter extends FragmentPagerAdapter {
     private List<Fragment> fragmentList = new ArrayList<>();
     private List<String> fragmenttitle = new ArrayList<>();
 
@@ -31,5 +35,5 @@ public class ViewpageAdapterextends FragmentPagerAdapter {
         fragmenttitle.add(title);
     }
 }
- {
-}
+
+

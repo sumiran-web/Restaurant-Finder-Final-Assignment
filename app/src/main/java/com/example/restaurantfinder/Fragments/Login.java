@@ -18,7 +18,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginFragment implements View.OnClickListener {
+import androidx.fragment.app.Fragment;
+
+import com.example.restaurantfinder.API.User_API;
+import com.example.restaurantfinder.BLL.LoginBLL;
+import com.example.restaurantfinder.Dashboard.Dashboard;
+import com.example.restaurantfinder.Models.Token_Generate;
+import com.example.restaurantfinder.R;
+import com.example.restaurantfinder.Retro_API.API;
+
+public class Login extends Fragment implements View.OnClickListener {
     EditText etuname, etpass;
     Button btn_login;
     SensorManager sensorManager;
@@ -138,5 +147,5 @@ public class LoginFragment implements View.OnClickListener {
     }
 
 }
- {
-}
+
+

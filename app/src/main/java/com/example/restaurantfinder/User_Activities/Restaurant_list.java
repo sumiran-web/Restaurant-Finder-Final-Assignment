@@ -2,6 +2,14 @@ package com.example.restaurantfinder.User_Activities;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.restaurantfinder.Adapters.Restaurant_List_Adapter;
+import com.example.restaurantfinder.BLL.RestaurantBLL;
+import com.example.restaurantfinder.R;
+
 public class Restaurant_list extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;

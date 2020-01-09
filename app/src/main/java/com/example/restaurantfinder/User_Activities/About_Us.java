@@ -1,9 +1,11 @@
 package com.example.restaurantfinder.User_Activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.gluttony.R;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.restaurantfinder.R;
+
 
 public class About_Us extends AppCompatActivity {
 
