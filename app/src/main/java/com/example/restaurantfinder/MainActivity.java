@@ -1,11 +1,14 @@
 package com.example.restaurantfinder;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import com.example.restaurantfinder.Fragments.LoginFragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.example.restaurantfinder.Adapters.ViewpageAdapter;
+import com.example.restaurantfinder.Fragments.Login;
 import com.example.restaurantfinder.Fragments.Register;
+import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;

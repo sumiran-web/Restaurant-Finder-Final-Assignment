@@ -7,15 +7,35 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.restaurantfinder.API.Restaurant_API;
 import com.example.restaurantfinder.Adapters.CommentAdapter;
+import com.example.restaurantfinder.Adapters.Restaurant_List_Adapter;
+import com.example.restaurantfinder.Models.Reviews;
+import com.example.restaurantfinder.R;
+import com.example.restaurantfinder.Retro_API.API;
+import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.annotations.MarkerOptions;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+import com.mapbox.mapboxsdk.maps.MapView;
+import com.mapbox.mapboxsdk.maps.MapboxMap;
+import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
+import com.mapbox.mapboxsdk.maps.Style;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
-
-public class Restaurant_info extends AppCompatActivity  {
+public class Restaurant_info extends AppCompatActivity {
     TextView textView_rest_name,textView_rest_contact,textView_rest_type,textView_rest_desc,textView_latitude,textView_longitude;
     ImageView iv_logo;
     SharedPreferences preferences;
@@ -87,7 +107,7 @@ public class Restaurant_info extends AppCompatActivity  {
         final String id = getIntent().getStringExtra("id");
 
         Toast.makeText(this, id, Toast.LENGTH_LONG).show();
-        Call<List<Reviews>>listCall = restaurant_api.getReview(id);
+        Call<List<Reviews>> listCall = restaurant_api.getReview(id);
         listCall.enqueue(new Callback<List<Reviews>>() {
             @Override
             public void onResponse(Call<List<Reviews>> call, Response<List<Reviews>> response) {
